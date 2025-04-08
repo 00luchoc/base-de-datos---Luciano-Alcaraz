@@ -44,3 +44,15 @@ FROM film f
 
 --ACTIVIDAD 5
 
+no
+
+--ACTIVIDAD 6
+
+SELECT COUNT(*), rating FROM film
+GROUP BY rating
+
+--ACTIVIDAD 7
+
+kpo44
+
+
