@@ -194,7 +194,51 @@ inner join actor a
 on a.actor_id = fa.actor_id
 ORDER BY rental_duration ASC;
 
+--ACTIVIDAD 17
+
+SELECT  cu.last_name, co.country, ci.city, ad.address, r.rental_id, p.payment_id, p.amount
+FROM customer cu
+INNER JOIN address ad 
+ON cu.address_id = ad.address_id
+INNER JOIN city ci 
+ON ad.city_id = ci.city_id
+INNER JOIN country co 
+ON ci.country_id = co.country_id
+INNER JOIN rental r 
+ON cu.customer_id = r.customer_id
+INNER JOIN payment p ON cu.customer_id = p.customer_id AND r.rental_id = p.rental_id
+ORDER BY p.amount;
+
+--ACTIVIDAD 18
+
+INSERT INTO actor(actor_id,first_name, last_name, last_update)
+VALUES(201,'Luciano', 'Valentin', '2025-04-22 16:46:29');
+
+--ACTIVIDAD 19
+
+INSERT INTO actor(actor_id,first_name, last_name, last_update)
+VALUES(202,'Julieta', 'Belen', '2025-04-22 16:48:29');
+
+INSERT INTO actor(actor_id,first_name, last_name, last_update)
+VALUES(203,'Karen', 'Diaz', '2025-04-22 16:49:29');
+
+--ACTIVIDAD 20
+
+UPDATE actor
+SET first_name = 'Bautista', last_name = 'Moyano', last_update = '2025-04-22 16:52:00'
+WHERE actor_id = 201;
+
+UPDATE actor
+SET first_name = 'Luciano', last_name = 'Savia', last_update = '2025-04-22 16:54:00'
+WHERE actor_id = 202;
+
+UPDATE actor
+SET first_name = 'Luana', last_name = 'Lopez', last_update = '2025-04-22 16:59:00'
+WHERE actor_id = 202;
+
+--ACTIVIDAD 21
+
+DELETE FROM actor 
+WHERE actor_id >= 201 AND actor_id <= 203
 
 kpo44
-
-
