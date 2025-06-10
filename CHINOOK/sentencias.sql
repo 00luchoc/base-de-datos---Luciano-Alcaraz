@@ -63,13 +63,54 @@ LIMIT 20
 
 --ACTIVIDAD 8
 
+SELECT 
+  e.LastName AS Empleado,
+  e.Title AS Puesto,
+  j.LastName AS Jefe,
+  COUNT(c.CustomerId) AS ClientesAtendidos
+FROM employees e
+LEFT JOIN employees j ON e.ReportsTo = j.EmployeeId
+LEFT JOIN customers c ON e.EmployeeId = c.SupportRepId
+GROUP BY e.EmployeeId
+ORDER BY ClientesAtendidos DESC;
 
 --ACTIVIDAD 9
 
+INSERT INTO tracks (Name, AlbumId, MediaTypeId, GenreId, Composer, Milliseconds, Bytes, UnitPrice)
+VALUES
+('Get you', 1, 1, 1, 'Daniel Caesar', 354000, 5000000, 1.29),
+('Freudian', 2, 1, 2, 'Daniel Caesar', 183000, 3200000, 0.99),
+('Blessed', 3, 1, 3, 'Daniel Caesar', 482000, 6000000, 1.49),
+('CYANIDE', 4, 1, 4, 'Daniel Caesar', 356000, 5400000, 1.19);
+
 --ACTIVIDAD 10
+
+SELECT *
+FROM tracks
+WHERE Name IN (
+  'Get you',
+  'Freudian',
+  'Blessed',
+  'CYANIDE'
+);
 
 --ACTIVIDAD 11
 
+UPDATE tracks
+SET Name = 'Loose', Composer = 'Daniel Caesar'
+WHERE Name = 'Get you';
+
+UPDATE tracks
+SET Name = 'We find love', Composer = 'Daniel Caesar'
+WHERE Name = 'CYANIDE';
+
 --ACTIVIDAD 12
 
+SELECT *
+FROM tracks
+WHERE Name IN ('Loose', 'We find love');
+
 --ACTIVIDAD 13
+
+DELETE FROM tracks
+WHERE Name IN ('We find love', 'Blessed');
